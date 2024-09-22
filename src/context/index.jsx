@@ -6,6 +6,7 @@ export default function GlobalState({ children }) {
   const [searchParam, setSearchParam] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [recipeList, setRecipeList] = useState([]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,8 +20,13 @@ export default function GlobalState({ children }) {
         throw new Error(`Something went wrong | ${response.status}`);
       }
       const data = await response.json();
+      if (data?.data?.recipes) {
+        setRecipeList(data?.data?.recipes);
+        setSearchParam('');
+      }
     } catch (e) {
       setError(e.message);
+      setSearchParam('');
     } finally {
       setLoading(false);
     }
@@ -28,7 +34,14 @@ export default function GlobalState({ children }) {
 
   return (
     <GlobalContext.Provider
-      value={{ searchParam, setSearchParam, handleSubmit, loading, error }}
+      value={{
+        searchParam,
+        setSearchParam,
+        handleSubmit,
+        loading,
+        error,
+        recipeList,
+      }}
     >
       {children}
     </GlobalContext.Provider>
