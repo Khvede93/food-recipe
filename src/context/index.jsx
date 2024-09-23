@@ -39,7 +39,6 @@ export default function GlobalState({ children }) {
     const index = cpyFavoritesList.findIndex(
       (item) => item.id === getCurrentRecipe.id
     );
-    console.log(index);
     if (index === -1) {
       cpyFavoritesList.push(getCurrentRecipe);
     } else {
