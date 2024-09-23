@@ -20,6 +20,7 @@ export const Navbar = () => {
           name='search'
           placeholder='Enter Items ...'
           className='p-3 px-8 rounded-full outline-none lg:w-96 bg-white/75 shadow-lg shadow-gray-100 focus:shadow-gray-200'
+          aria-label='Search for items'
         />
       </form>
       <ul className='flex gap-5'>
