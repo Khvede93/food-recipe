@@ -24,7 +24,7 @@ export const Home = () => {
       ) : (
         <div>
           <p className='lg:text-4xl text-xl text-black font-extrabold'>
-            Nothing to show !!! please use Search
+            Nothing to show !!! please use Search field
           </p>
         </div>
       )}

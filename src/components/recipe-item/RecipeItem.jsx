@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const RecipeItem = ({ item }) => {
-  console.log(item);
-
   return (
     <div className='flex flex-col w-80 overflow-hidden p-5 bg-white/75 shadow-xl gap-5 border rounded-2xl border-white text-center'>
       <div className='h-40 flex justify-center overflow-hidden items-center rounded-xl'>
