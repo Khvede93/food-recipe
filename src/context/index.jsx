@@ -42,7 +42,7 @@ export default function GlobalState({ children }) {
     if (index === -1) {
       cpyFavoritesList.push(getCurrentRecipe);
     } else {
-      cpyFavoritesList.splice(index);
+      cpyFavoritesList.splice(index, 1);
     }
     setFavoritesList(cpyFavoritesList);
   }
