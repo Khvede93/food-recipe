@@ -33,12 +33,58 @@ export const Details = () => {
   }, [id]);
 
   if (loading) {
-    <div>Loading Data Please Wait</div>;
+    return (
+      <div className='text-center lg:text-4xl text-xl text-black font-extrabold'>
+        Loading Data Please Wait
+      </div>
+    );
   }
 
   if (error) {
-    <div>Something Went Wrong | {error.message}</div>;
+    return <div>Something Went Wrong | {error.message}</div>;
   }
 
-  return <div>Details</div>;
+  return (
+    <div className='container mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-10'>
+      <div className='row-start-2 lg:row-start-auto'>
+        <div className='h-96 overflow-hidden rounded-xl group'>
+          <img
+            loading='lazy'
+            src={recipeDetails?.image_url}
+            alt={`recipe image ${recipeDetails?.title}`}
+            className='w-full h-full object-cover block group-hover:scale-105 duration-300'
+          />
+        </div>
+      </div>
+      <div className='flex flex-col gap-3'>
+        <span className='text-sm text-cyan-700 font-md'>
+          {recipeDetails?.publisher}
+        </span>
+        <h3 className='text-2xl font-bold truncate text-black'>
+          {recipeDetails?.title}
+        </h3>
+        <div>
+          <button className='p-3 px-8 rounded-lg text-sm uppercase font-md tracking-wider mt-3 shadow-md inline-block bg-black text-white hover:text-cyan-700'>
+            Save as Favorites
+          </button>
+        </div>
+        <div>
+          <span className='text-2xl font-semibold text-black'>Ingredients</span>
+          <ul className='flex flex-col gap-3'>
+            {recipeDetails?.ingredients.map((ing, i) => (
+              <li key={i}>
+                <span className='text-2xl font-semibold text-black'>
+                  {ing.quantity} {ing.unit}
+                </span>
+                <span className='text-2xl font-semibold text-black'>
+                  {' '}
+                  - {ing.description}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 };
