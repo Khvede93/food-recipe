@@ -4,7 +4,8 @@ import { GlobalContext } from '../../context';
 
 export const Details = () => {
   const { id } = useParams();
-  const { recipeDetails, setRecipeDetails } = useContext(GlobalContext);
+  const { recipeDetails, setRecipeDetails, handleAddToFavorites } =
+    useContext(GlobalContext);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -64,7 +65,10 @@ export const Details = () => {
           {recipeDetails?.title}
         </h3>
         <div>
-          <button className='p-3 px-8 rounded-lg text-sm uppercase font-md tracking-wider mt-3 shadow-md inline-block bg-black text-white hover:text-cyan-700'>
+          <button
+            onClick={() => handleAddToFavorites(recipeDetails)}
+            className='p-3 px-8 rounded-lg text-sm uppercase font-md tracking-wider mt-3 shadow-md inline-block bg-black text-white hover:text-cyan-700'
+          >
             Save as Favorites
           </button>
         </div>
