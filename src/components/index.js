@@ -1,2 +1,2 @@
 export { Navbar } from './navbar';
-export { RecipeList } from './recipe-list';
+export { RecipeItem } from './recipe-item';
