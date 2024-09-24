@@ -59,6 +59,7 @@ export default function GlobalState({ children }) {
         recipeDetails,
         setRecipeDetails,
         handleAddToFavorites,
+        favoritesList,
       }}
     >
       {children}
