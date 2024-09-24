@@ -4,8 +4,12 @@ import { GlobalContext } from '../../context';
 
 export const Details = () => {
   const { id } = useParams();
-  const { recipeDetails, setRecipeDetails, handleAddToFavorites } =
-    useContext(GlobalContext);
+  const {
+    recipeDetails,
+    setRecipeDetails,
+    handleAddToFavorites,
+    favoritesList,
+  } = useContext(GlobalContext);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -69,7 +73,12 @@ export const Details = () => {
             onClick={() => handleAddToFavorites(recipeDetails)}
             className='p-3 px-8 rounded-lg text-sm uppercase font-md tracking-wider mt-3 shadow-md inline-block bg-black text-white hover:text-cyan-700'
           >
-            Save as Favorites
+            {favoritesList &&
+            favoritesList.length &&
+            favoritesList.findIndex((item) => item.id === recipeDetails?.id) !==
+              -1
+              ? 'Remove From Favorites'
+              : 'Add To Favorites'}
           </button>
         </div>
         <div>
